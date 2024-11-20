@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-// Connect to MongoDB
+
 const dbURI = "mongodb://mongo:27017/MLProdDB1";
 
 mongoose.connect(dbURI)

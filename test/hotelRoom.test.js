@@ -1,7 +1,7 @@
 const request = require('supertest');
 const mongoose = require('mongoose');
-const app = require('../index'); // Import the Express app
-const HotelRoom = require('../models/HotelRoom'); // Import the HotelRoom model
+const app = require('../index'); 
+const HotelRoom = require('../models/HotelRoom'); 
 
 
 // Connect to a test database before running tests
