@@ -5,12 +5,20 @@ const HotelRoom = require('./models/HotelRoom');
 const app = express();
 app.use(express.json());
 
-
 // CRUD Endpoints
 
 // Create a Hotel Room
 app.post('/rooms', async (req, res) => {
     try {
+        // Check if roomNumber already exists
+        const existingRoom = await HotelRoom.findOne({ roomNumber: req.body.roomNumber });
+
+        if (existingRoom) {
+            // Return 400 if roomNumber is duplicate
+            return res.status(400).json({ error: 'Room number already exists' });
+        }
+
+        // Create and save new room
         const room = new HotelRoom(req.body);
         const savedRoom = await room.save();
         res.status(201).json(savedRoom);
@@ -63,4 +71,3 @@ app.delete('/rooms/:id', async (req, res) => {
 });
 
 module.exports = app;
-
