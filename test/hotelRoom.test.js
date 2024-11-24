@@ -3,10 +3,9 @@ const mongoose = require('mongoose');
 const app = require('../index'); 
 const HotelRoom = require('../models/HotelRoom'); 
 
-
-// Connect to a test database before running tests
+// Connect to MongoDB Atlas before running tests
 beforeAll(async () => {
-    const dbURI = "mongodb://mongo:27017/MLProdDB1";
+    const dbURI = "mongodb+srv://sidiamadooubocoum:6IGYtrJgblg74BF2@cluster0.c1jje.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
     await mongoose.connect(dbURI);
     await HotelRoom.deleteMany();
 });
@@ -43,7 +42,7 @@ describe('Hotel Room GET API Tests', () => {
             .post('/rooms')
             .send({ roomNumber: "number here", roomType: 123, pricePerNight: 200, isBooked: false });
         expect(response.status).toBe(400);
-    })
+    });
 
     it('should create a new room where roomNumber already exists in DB (unhappy path)', async () => {
         const response = await request(app)

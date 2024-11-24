@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 
-
-
-const dbURI = "mongodb://mongo:27017/MLProdDB1";
+// Connect to MongoDB Atlas
+const dbURI = "mongodb+srv://sidiamadooubocoum:6IGYtrJgblg74BF2@cluster0.c1jje.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose.connect(dbURI)
-    .then(() => console.log('Connected to MongoDB'))
+    .then(() => console.log('Connected to MongoDB Atlas'))
     .catch(err => console.error('Failed to connect to MongoDB:', err));
 
 // Define a schema and model for Hotel Room
